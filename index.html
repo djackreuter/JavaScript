@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Event listeners & Processing forms with events</title>
+		<style>
+			#block {
+				background: black;
+				width: 200px;
+				height: 200px;
+				border-radius: 50%;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<label>What's your name?
+				<input id="name" type="text">
+			</label>
+			<br>
+			<label>What language do you speak?
+				<select id="lang">
+					<option value="en">English</option>
+					<option value="es">Spanish</option>
+					<option value="de">German</option>
+					<option value="plt">Pig-latin</option>
+				</select>
+			</label>
+			<br>
+			<button id="button" type="button">Greet me, please!</button>
+			<div id="message"></div>
+		</div>
+
+		<a id="ohnoes" href="https://www.kasandbox.org/programming-sounds/rpg/giant-no.mp3">What does Oh Noes say?</a>
+		<br><br>
+		<div id="block"></div>
+		<div id="msg"></div>
+
+		<script>
+			// Step 1: Find the element we want the event on
+			var button = document.getElementById("button");
+			// Step 2: Define the event listener function
+			var onButtonClick = function() {
+				var name = document.getElementById("name").value;
+				var lang = document.getElementById("lang").value;
+				var greeting;
+				if (lang === "es") {
+					greeting = " Hola, " + name;
+				} else if (lang === "de") {
+					greeting = " Guten Tag, " + name;
+				} else if (lang === "plt") {
+					greeting = " Ello-hay, " + name;
+				} else {
+					greeting = " Heyaz, " + name;
+				}
+				document.getElementById("message").textContent = greeting;
+			};
+			// Step 3: Attach the event listener to element
+			button.addEventListener("click", onButtonClick);
+
+			/* var ohNoesEl = document.getElementById("ohnoes");
+			 var onOhNoesClick = function(e) {
+			 e.preventDefault();
+			 var audioEl = document.createElement("audio");
+			 audioEl.src = "https://www.kasandbox.org/programming-sounds/rpg/giant-no.mp3";
+			 audioEl.autoPlay = "true";
+			 document.body.appendChild(audioEl);
+			 }
+			 ohNoesEl.addEventListener("click", onOhNoesClick);
+			 */
+
+			var block = document.getElementById("block");
+			var onMouseMove = function() {
+				document.getElementById("msg").textContent += "Hello ";
+			};
+			// mousemove event type is lowercase
+			block.addEventListener("mousemove", onMouseMove);
+
+
+			/* To get what user typed in name input field (must add .value property to
+			 specify because name object contains so much info) */
+
+
+			// create variable for greeting and concatenate name
+
+
+		</script>
+	</body>
+</html>
